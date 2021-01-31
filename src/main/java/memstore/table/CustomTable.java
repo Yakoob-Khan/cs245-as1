@@ -9,6 +9,8 @@ import java.io.IOException;
  */
 public class CustomTable implements Table {
 
+    private IndexedRowTable table;
+
     public CustomTable() { }
 
     /**
@@ -20,6 +22,8 @@ public class CustomTable implements Table {
     @Override
     public void load(DataLoader loader) throws IOException {
         // TODO: Implement this!
+        this.table = new IndexedRowTable(0);
+        this.table.load(loader);
     }
 
     /**
@@ -28,7 +32,7 @@ public class CustomTable implements Table {
     @Override
     public int getIntField(int rowId, int colId) {
         // TODO: Implement this!
-        return 0;
+        return this.table.getIntField(rowId, colId);
     }
 
     /**
@@ -37,6 +41,7 @@ public class CustomTable implements Table {
     @Override
     public void putIntField(int rowId, int colId, int field) {
         // TODO: Implement this!
+        this.table.putIntField(rowId, colId, field);
     }
 
     /**
@@ -48,7 +53,7 @@ public class CustomTable implements Table {
     @Override
     public long columnSum() {
         // TODO: Implement this!
-        return 0;
+        return this.table.columnSum();
     }
 
     /**
@@ -61,7 +66,7 @@ public class CustomTable implements Table {
     @Override
     public long predicatedColumnSum(int threshold1, int threshold2) {
         // TODO: Implement this!
-        return 0;
+        return this.table.predicatedColumnSum(threshold1, threshold2);
     }
 
     /**
@@ -73,7 +78,7 @@ public class CustomTable implements Table {
     @Override
     public long predicatedAllColumnsSum(int threshold) {
         // TODO: Implement this!
-        return 0;
+        return this.table.predicatedAllColumnsSum(threshold);
     }
 
     /**
@@ -85,7 +90,6 @@ public class CustomTable implements Table {
     @Override
     public int predicatedUpdate(int threshold) {
         // TODO: Implement this!
-        return 0;
+        return this.table.predicatedUpdate(threshold);
     }
-
 }
